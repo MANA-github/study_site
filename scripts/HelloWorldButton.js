@@ -9,3 +9,4 @@ async function catchMessage(type) {
         document.getElementById("message").innerText = "取得に失敗しました";
     }
 } 
+
