@@ -2,8 +2,8 @@ document.body.insertAdjacentHTML("afterbegin", `
     <button class="toggle-button">☰ メニューを開く</button>
     <div class="sidebar">
       <h2>メニュー</h2>
-      <a href="#">ホーム</a>
-      <a href="#">プロフィール</a>
+      <a href="./index.html">ホーム</a>
+      <a href="./menu.html">メニュー</a>
       <a href="#">設定</a>
       <a href="#">ログアウト</a>
     </div>
