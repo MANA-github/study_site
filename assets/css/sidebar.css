@@ -14,12 +14,14 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  padding-top: 80px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   transition: left 0.3s ease;
 }
 
 .sidebar.active {
   left: 0;
+  padding-top: 80px;
 }
 
 .sidebar a {
@@ -58,11 +60,7 @@ body {
   background-color: #34495e;
 }
 
-.word p {
-  margin-top: 100;
-}
-
 html {
-  padding-top: 30px;
-  padding-left: 30px;
+  padding-top: 70px;
+  padding-left: 20px;
 }
