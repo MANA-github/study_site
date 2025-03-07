@@ -1,0 +1,13 @@
+root
+  ┣ assets
+  ┃   ┣ css
+  ┃   ┃   ┗ sidebar.css
+  ┃   ┣ js
+  ┃   ┃   ┣ HelloWorldButton.js
+  ┃   ┃   ┗ sidebar.js
+  ┃   ┗ img
+  ┣ public
+  ┃   ┗ menu.html
+  ┣ workers
+  ┃   ┗ worker.js
+  ┗ index.html
