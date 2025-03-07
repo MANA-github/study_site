@@ -1,14 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // サイドバーを挿入
     document.body.insertAdjacentHTML("afterbegin", `
         <button class="toggle-button">☰ メニューを開く</button>
         <div class="sidebar">
             <h2>メニュー</h2>
-            <a href="../index.html">ホーム</a>
+            <a href="#" class="home-link">ホーム</a>
             <a href="./public/menu.html">メニュー</a>
             <a href="#">設定</a>
             <a href="#">ログアウト</a>
         </div>
     `);
+
+    // ホームリンクのパスを動的に修正
+    let homeLink = document.querySelector(".home-link");
+
+    if (homeLink) {
+        // 現在のパスが `/public/menu.html` なら `../index.html`、それ以外なら `index.html`
+        homeLink.href = location.pathname.includes("/public/") ? "../index.html" : "index.html";
+    }
 
     const sidebar = document.querySelector(".sidebar");
     const toggleButton = document.querySelector(".toggle-button");
