@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // サイドバーを挿入
     document.body.insertAdjacentHTML("afterbegin", `
         <button class="toggle-button">☰ メニューを開く</button>
         <div class="sidebar">
@@ -11,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `);
 
-    // ホームリンクのパスを動的に修正
     let homeLink = document.querySelector(".home-link");
 
     if (homeLink) {
-        // 現在のパスが `/public/menu.html` なら `../index.html`、それ以外なら `index.html`
         homeLink.href = location.pathname.includes("/public/") ? "../index.html" : "index.html";
     }
 
