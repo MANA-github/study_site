@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="toggle-button">☰ メニューを開く</button>
         <div class="sidebar">
             <h2>メニュー</h2>
-            <a href="./index.html">ホーム</a>
+            <a href="../index.html">ホーム</a>
             <a href="./public/menu.html">メニュー</a>
             <a href="#">設定</a>
             <a href="#">ログアウト</a>
