@@ -4,26 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/sidebar.css">
-    <title>2列6段のレイアウト</title>
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(6, 1fr);
-            gap: 10px;
-            width: 80%;
-            margin: auto;
-        }
-
-        .grid-item {
-            background-color: lightblue;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid #000;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/menu.css">
+    <title>メニュー</title>
 </head>
 <body>
+
+    <button onclick="getMenuJson()">catch</button>
+    <p id="response"></p>
 
     <div class="grid-container">
         <div class="grid-item">1</div>

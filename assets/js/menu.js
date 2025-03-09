@@ -3,4 +3,5 @@ async function getMenuJson() {
     const data = await response.json();
 
     console.log(data);
+    document.getElementById("response").innerText = "Check the console log !";
 }
