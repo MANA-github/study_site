@@ -1,6 +1,6 @@
 async function catchMessage(type) {
     try {
-        const response = await fetch(`https://test.manawork79.workers.dev/api/greet?type=${type}`);
+        const response = await fetch(`https://test.manawork79.workers.dev/api/helloworld?type=${type}`);
         const text = await response.text();
         document.getElementById("message").innerText = text;
     }
