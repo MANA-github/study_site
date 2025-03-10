@@ -5,12 +5,14 @@ async function getMenuJson() {
     console.log(data);
     document.getElementById("response").innerText = "Check the console log !";
 
-    const menuList = document.getElementById("menuList");
+    const gridContainer = document.querySelector(".grid-container");
+    
+    gridContainer.innerHTML = "";
 
     data.forEach(item => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${item.name} : ${item.price}円`;
-        menuList.appendChild(listItem);
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");    
+        gridItem.innerHTML = `<p>${item.name}</p><p>${item.price}円</p>`;
+        gridContainer.appendChild(gridItem);
     });
-
 }
