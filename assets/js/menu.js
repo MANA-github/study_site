@@ -4,4 +4,13 @@ async function getMenuJson() {
 
     console.log(data);
     document.getElementById("response").innerText = "Check the console log !";
+
+    const menuList = document.getElementById("menuList");
+
+    data.forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${item.name} : ${item.price}円`;
+        menuList.appendChild(listItem);
+    });
+
 }
