@@ -12,7 +12,11 @@ async function getMenuJson() {
     data.forEach(item => {
         const gridItem = document.createElement("div");
         gridItem.classList.add("grid-item");    
-        gridItem.innerHTML = `<p>${item.name}</p><p>${item.price}円</p>`;
+        gridItem.innerHTML = `
+            <img src="${item.image_url}" alt="${item.name}" style="width: 100px; height: 100px;">
+            <p>${item.name}</p>
+            <p>${item.price}円</p>
+        `;
         gridContainer.appendChild(gridItem);
     });
 }
