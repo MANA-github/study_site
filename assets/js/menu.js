@@ -1,13 +1,13 @@
 async function loadMenu() {
     try {
-        const response = await fetch("https://test.manawork79.workers.dev/api/menu");
+        const response = await fetch("https://database.manawork79.workers.dev/api/menu");
         const data = await response.json();
 
-        console.log(data); // 確認用
+        console.log(data);
 
         const gridContainer = document.querySelector(".grid-container");
 
-        gridContainer.innerHTML = ""; // 初期化
+        gridContainer.innerHTML = "";
 
         data.forEach(item => {
             const gridItem = document.createElement("div");
@@ -24,5 +24,4 @@ async function loadMenu() {
     }
 }
 
-// ページがロードされたらメニューを読み込む
 window.addEventListener("DOMContentLoaded", loadMenu);
