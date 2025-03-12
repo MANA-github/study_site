@@ -1,5 +1,5 @@
-const response = await fetch("https://test.manawork79.workers.dev/api/menu");
-const data = await response.json();
+const response = fetch("https://test.manawork79.workers.dev/api/menu");
+const data = response.json();
 
 console.log(data);
 
