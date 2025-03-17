@@ -8,13 +8,15 @@ async function loadMenu() {
         const gridContainer = document.querySelector(".grid-container");
 
         gridContainer.innerHTML = "";
+        console.log(Array.isArray(data));\
+
 
         data.forEach(item => {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");    
             gridItem.innerHTML = `
-                <img src="${item.image_url}" alt="${item.name}" style="width: 100px; height: 100px;">
-                <p>${item.name}</p>
+                <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
+                <p>${item.MenuName}</p>
                 <p>${item.price}円</p>
             `;
             gridContainer.appendChild(gridItem);
