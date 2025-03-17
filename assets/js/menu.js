@@ -8,6 +8,8 @@ async function loadMenu() {
         const gridContainer = document.querySelector(".grid-container");
 
         gridContainer.innerHTML = "";
+        console.log(Array.isArray(data));
+
 
         data.forEach(item => {
             const gridItem = document.createElement("div");
