@@ -11,13 +11,20 @@ async function loadMenu() {
         console.log(Array.isArray(data));
 
         data.forEach(item => {
+            // if (!item.Available) return;
+            // 実験中は非表示メニューも表示
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");    
             gridItem.innerHTML = `
                 <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
                 <p>${item.MenuName}</p>
-                <p>${item.price}円</p>
+                <p>残り${item.Remaining}個　${item.price}円</p>
             `;
+
+            // 実験用
+            if (!item.Available)    gridItem.innerHTML = "<p>提供不可</p>"
+            // 実験用
+
             gridContainer.appendChild(gridItem);
         });
     } catch (error) {
