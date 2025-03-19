@@ -16,7 +16,7 @@ async function loadMenu() {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");    
             gridItem.innerHTML = `
-                <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
+                <a href="./purchase.html"><img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;"></a>
                 <p>${item.MenuName}</p>
                 <p>残り${item.Remaining}個　${item.price}円</p>
             `;

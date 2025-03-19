@@ -3,18 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="toggle-button">☰ メニューを開く</button>
         <div class="sidebar">
             <h2>メニュー</h2>
-            <a href="#" class="home-link">ホーム</a>
-            <a href="./public/menu.html">メニュー</a>
+            <a href="https://mana-github.github.io/study_site/index.html">ホーム</a>
+            <a href="https://mana-github.github.io/study_site/menu.html">メニュー</a>
             <a href="#">設定</a>
             <a href="#">ログアウト</a>
         </div>
     `);
-
-    let homeLink = document.querySelector(".home-link");
-
-    if (homeLink) {
-        homeLink.href = location.pathname.includes("/public/") ? "../index.html" : "index.html";
-    }
 
     const sidebar = document.querySelector(".sidebar");
     const toggleButton = document.querySelector(".toggle-button");
