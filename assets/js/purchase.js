@@ -4,7 +4,8 @@ async function selectMenu() {
     if (!MenuId) {
         console.log("ストレージにデータが存在しません");
         alert("メニューを選択してください");
-        window.location.href("menu.html");
+        window.location.href = "menu.html";
+        return;
     }
 
     console.log(MenuId);
