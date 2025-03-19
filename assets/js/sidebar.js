@@ -3,18 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="toggle-button">☰ メニューを開く</button>
         <div class="sidebar">
             <h2>メニュー</h2>
-            <a href="#" class="home-link">ホーム</a>
-            <a href="./public/menu.html">メニュー</a>
-            <a href="#">設定</a>
-            <a href="#">ログアウト</a>
+            <a href="home.html" class="linkCheck">ホーム</a>
+            <a href="menu.html" class="linkCheck">メニュー</a>
+            <a href="settings.html">設定</a>
+            <a href="logout.html">ログアウト</a>
         </div>
     `);
 
-    let homeLink = document.querySelector(".home-link");
+    let linkCheck = document.querySelectorAll(".linkCheck");
+    let currentPage = window.location.pathname.split("/").pop();
 
-    if (homeLink) {
-        homeLink.href = location.pathname.includes("/public/") ? "../index.html" : "index.html";
-    }
+    linkCheck.forEach(link => {
+        let linkText = link.textContent.trim();
+
+        if (link.href.endsWith(currentPage) || currentPage === "study_site") {
+            window.location.href = link.href;
+        }
+    });
 
     const sidebar = document.querySelector(".sidebar");
     const toggleButton = document.querySelector(".toggle-button");
