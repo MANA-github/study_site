@@ -10,7 +10,7 @@ async function selectMenu() {
 
     console.log(MenuId);
 
-    const response = await fetch(`https://database.manawork79.workers.dev/api/menu/?id=${MenuId}`);
+    const response = await fetch(`https://database.manawork79.workers.dev/api/menu?id=${MenuId}`);
     const data = await response.json();
 
     const item = document.querySelector(".menu");
