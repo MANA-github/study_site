@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="sidebar">
             <h2>メニュー</h2>
             <a href="https://mana-github.github.io/study_site/index.html">ホーム</a>
-            <a href="https://mana-github.github.io/study_site/menu.html">メニュー</a>
+            <a href="https://mana-github.github.io/study_site/public/menu.html">メニュー</a>
             <a href="#">設定</a>
             <a href="#">ログアウト</a>
         </div>
