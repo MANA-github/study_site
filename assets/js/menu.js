@@ -16,7 +16,7 @@ async function loadMenu() {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");    
             gridItem.innerHTML = `
-                <a href="./purchase.html">
+                <a href="./purchase.html" data-id="${item.MenuId}" class="menuLink">
                     <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
                     <p>${item.MenuName}</p>
                     <p>残り${item.Remaining}個　${item.price}円</p>
@@ -33,5 +33,13 @@ async function loadMenu() {
         console.error("メニューの取得に失敗しました:", error);
     }
 }
+
+document.querySelectorAll(".menuLink").forEach(link =>{
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        const MenuId = this.data-id;
+        sessionStorage.setItem("selectedMenuId", MenuId);
+    });
+});
 
 window.addEventListener("DOMContentLoaded", loadMenu);
