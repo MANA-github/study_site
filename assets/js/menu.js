@@ -24,22 +24,24 @@ async function loadMenu() {
             `;
 
             // 実験用
-            if (!item.Available)    gridItem.innerHTML = "<p>提供不可</p>"
-            // 実験用
+            if (!item.Available) gridItem.innerHTML = "<p>提供不可</p>";
 
             gridContainer.appendChild(gridItem);
         });
+
     } catch (error) {
         console.error("メニューの取得に失敗しました:", error);
     }
 }
 
-document.querySelectorAll(".menuLink").forEach(link =>{
-    link.addEventListener("click", function(event) {
+document.querySelector(".grid-container").addEventListener("click", function(event) {
+    const target = event.target.closest(".menuLink");
+    if (target) {
         event.preventDefault();
-        const MenuId = this.data-id;
+        const MenuId = target.dataset.id;
         sessionStorage.setItem("selectedMenuId", MenuId);
-    });
+        window.location.href = target.href;
+    }
 });
 
 window.addEventListener("DOMContentLoaded", loadMenu);
