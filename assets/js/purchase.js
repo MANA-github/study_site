@@ -35,9 +35,10 @@ async function selectMenu() {
 
         const contents = document.createElement("div");
         contents.innerHTML = `
-            <img src="${menuData.ImgUrl}" alt="${menuData.MenuName}" style="width: 100px; height: 100px;">
+            <img src="${menuData.ImgUrl}" alt="${menuData.MenuName}" style="width: 300px; height: 300px;">
             <p>${menuData.MenuName}</p>
             <p>残り${menuData.Remaining}個　${text}</p>
+            <button onclick=purchase(MenuId)>購入</button>
         `;
 
         item.appendChild(contents);
@@ -45,6 +46,10 @@ async function selectMenu() {
         console.error("メニューの取得に失敗しました:", error);
         alert("データの取得に失敗しました");
     }
+}
+
+async function purchase(id) {
+    
 }
 
 window.addEventListener("DOMContentLoaded", selectMenu);
