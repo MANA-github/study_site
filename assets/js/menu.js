@@ -14,20 +14,23 @@ async function loadMenu() {
             // if (!item.Available) return;
             // 実験中は非表示メニューも表示
             const gridItem = document.createElement("div");
-            gridItem.classList.add("grid-item");    
-            gridItem.innerHTML = `
-                <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
-                <p>${item.MenuName}</p>
-                <p>残り${item.Remaining}個　${item.price}円</p>
-            `;
-            gridContainer.appendChild(gridItem);
-
-            // 実験用
+            gridItem.classList.add("grid-item");
+            
             if (item.Available) {
-                gridItem.innerHTML = `<button onclick="purchase(${item.MenuId})">今すぐ購入</button><button>カゴに追加</button>`;
+                gridItem.innerHTML = `
+                    <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
+                    <p>${item.MenuName}</p>
+                    <p>残り${item.Remaining}個　${item.price}円</p>
+                    <button onclick="purchase(${item.MenuId})">今すぐ購入</button><button>カゴに追加</button>
+                `;
             }
             else {
-                gridItem.innerHTML = "<p>提供不可</p>";
+                gridItem.innerHTML = `
+                    <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
+                    <p>${item.MenuName}</p>
+                    <p>残り${item.Remaining}個　${item.price}円</p>
+                    <button onclick="purchase(${item.MenuId})">今すぐ購入</button><button>カゴに追加</button>
+                `;
             }
 
             gridContainer.appendChild(gridItem);
