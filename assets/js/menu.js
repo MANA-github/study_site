@@ -16,15 +16,19 @@ async function loadMenu() {
             const gridItem = document.createElement("div");
             gridItem.classList.add("grid-item");    
             gridItem.innerHTML = `
-                <a href="./purchase.html" data-id="${item.MenuId}" class="menuLink">
-                    <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
-                    <p>${item.MenuName}</p>
-                    <p>残り${item.Remaining}個　${item.price}円</p>
-                </a>
+                <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
+                <p>${item.MenuName}</p>
+                <p>残り${item.Remaining}個　${item.price}円</p>
             `;
+            gridContainer.appendChild(gridItem);
 
             // 実験用
-            if (!item.Available) gridItem.innerHTML = "<p>提供不可</p>";
+            if (item.Available) {
+                gridItem.innerHTML = `<button onclick="purchase(${item.MenuId})">今すぐ購入</button><button>カゴに追加</button>`;
+            }
+            else {
+                gridItem.innerHTML = "<p>提供不可</p>";
+            }
 
             gridContainer.appendChild(gridItem);
         });
@@ -34,14 +38,9 @@ async function loadMenu() {
     }
 }
 
-document.querySelector(".grid-container").addEventListener("click", function(event) {
-    const target = event.target.closest(".menuLink");
-    if (target) {
-        event.preventDefault();
-        const MenuId = target.dataset.id;
-        sessionStorage.setItem("selectedMenuId", MenuId);
-        window.location.href = target.href;
-    }
-});
+function purchase(id) {
+    sessionStorage.setItem("selectedMenuId", id);
+    window.location.href = "./purchase.html";
+}
 
 window.addEventListener("DOMContentLoaded", loadMenu);
