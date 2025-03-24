@@ -1,15 +1,63 @@
+body {
+  font-family: sans-serif;
+  background-color: #e9e6e6;
+  margin: 0;
+  padding: 20px;
+}
+
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
-  gap: 10px;
-  width: 80%;
-  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin: 40px auto;
 }
 
 .grid-item {
-  background-color: lightblue;
+  background-color: #ffffff;
   padding: 20px;
   text-align: center;
-  border: 1px solid #000;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.grid-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.grid-item p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+
+.grid-item button {
+  margin: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.grid-item button:hover {
+  background: linear-gradient(135deg, #ff7f50, #ff6347); 
+  transform: scale(1.05);
 }
