@@ -60,8 +60,8 @@ async function purchase(id) {
             },
             body: JSON.stringify(
                 {
-                    "MenuId": id,
-                    "flg": largeFlg
+                    MenuId: id,
+                    flg: largeFlg
                 }
             )
         }
