@@ -34,40 +34,53 @@ async function selectMenu() {
         if (!item) return;
 
         const contents = document.createElement("div");
+
         contents.innerHTML = `
             <img src="${menuData.ImgUrl}" alt="${menuData.MenuName}" style="width: 300px; height: 300px;">
             <p>${menuData.MenuName}</p>
             <p>残り${menuData.Remaining}個　${text}</p>
             <input type="checkbox" id="largeFlg">
             <label for="largeFlg">大盛り</label>
-            <button onclick="purchase(MenuId)">購入</button>
         `;
 
+        const button = document.createElement("button");
+        button.textContent = "購入";
+        button.addEventListener("click", () => purchase(MenuId));
+
+        contents.appendChild(button);
         item.appendChild(contents);
-    } catch (error) {
+
+    }
+    catch (error) {
         console.error("メニューの取得に失敗しました:", error);
         alert("データの取得に失敗しました");
     }
 }
 
 async function purchase(id) {
-    let largeFlg = document.getElementById("largeFlg");
+    const largeFlg = document.getElementById("largeFlg");
+
     const response = await fetch(
         "https://purchase.manawork79.workers.dev/api/purchase", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(
-                {
-                    MenuId: id,
-                    flg: largeFlg
-                }
-            )
+            body: JSON.stringify({
+                MenuId: id,
+                flg: largeFlg.checked
+            })
         }
     );
 
-    console.log(response);
+    const result = await response.json();
+    console.log("購入結果:", result);
+
+    if (response.ok) {
+        alert("購入が完了しました！");
+    } else {
+        alert("購入に失敗しました。");
+    }
 }
 
 window.addEventListener("DOMContentLoaded", selectMenu);
