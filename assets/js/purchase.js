@@ -38,6 +38,8 @@ async function selectMenu() {
             <img src="${menuData.ImgUrl}" alt="${menuData.MenuName}" style="width: 300px; height: 300px;">
             <p>${menuData.MenuName}</p>
             <p>残り${menuData.Remaining}個　${text}</p>
+            <input type="large" id="largeFlg">
+            <label for="largeFlg">大盛り</label>
             <button onclick=purchase(MenuId)>購入</button>
         `;
 
@@ -49,7 +51,24 @@ async function selectMenu() {
 }
 
 async function purchase(id) {
-    
+    let largeFlg = document.getElementById("largeFlg");
+    const response = await fetch(
+        "https://purchase.manawork79.workers.dev/api/purchase", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                {
+                    "MenuId": id,
+                    "flg": largeFlg
+                }
+            )
+        }
+    );
+
+    console.log(response);
+
 }
 
 window.addEventListener("DOMContentLoaded", selectMenu);

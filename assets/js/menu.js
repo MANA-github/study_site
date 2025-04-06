@@ -29,7 +29,7 @@ async function loadMenu() {
                     <img src="${item.ImgUrl}" alt="${item.MenuName}" style="width: 100px; height: 100px;">
                     <p>${item.MenuName}</p>
                     <p>残り${item.Remaining}個　${item.price}円</p>
-                    <button onclick="purchase(${item.MenuId})">今すぐ購入</button><button>カゴに追加</button>
+                    <p>購入不可</p>
                 `;
             }
 
