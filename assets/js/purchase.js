@@ -38,7 +38,7 @@ async function selectMenu() {
             <img src="${menuData.ImgUrl}" alt="${menuData.MenuName}" style="width: 300px; height: 300px;">
             <p>${menuData.MenuName}</p>
             <p>残り${menuData.Remaining}個　${text}</p>
-            <input type="large" id="largeFlg">
+            <input type="checkbox" id="largeFlg">
             <label for="largeFlg">大盛り</label>
             <button onclick=purchase(MenuId)>購入</button>
         `;
