@@ -68,7 +68,6 @@ async function purchase(id) {
     );
 
     console.log(response);
-
 }
 
 window.addEventListener("DOMContentLoaded", selectMenu);
