@@ -40,7 +40,7 @@ async function selectMenu() {
             <p>残り${menuData.Remaining}個　${text}</p>
             <input type="checkbox" id="largeFlg">
             <label for="largeFlg">大盛り</label>
-            <button onclick=purchase(MenuId)>購入</button>
+            <button onclick="purchase(MenuId)">購入</button>
         `;
 
         item.appendChild(contents);
