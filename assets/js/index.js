@@ -43,7 +43,7 @@ function getCookie(name) {
 }
 
 function setCookie(name, key) {
-    document.cookie = `uuid=${uuid}; path=/; max-age=126,144,000`;
+    document.cookie = `${name}=${key}; path=/; max-age=126144000`;
 }
 
 window.addEventListener("DOMContentLoaded", uuidCheck);
