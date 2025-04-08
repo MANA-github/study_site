@@ -10,8 +10,8 @@ async function uuidCheck() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                    IP: data.ip,
-                    FP: data.visitorId
+                    ip: data.ip,
+                    fp: data.visitorId
                 }
             )
         }); 
