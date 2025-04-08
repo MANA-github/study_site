@@ -4,7 +4,7 @@ async function uuidCheck() {
 
     if (!userId) {
         const data = await getUserData();
-        const response = await fetch("/api/uuid", {
+        const response = await fetch("https://api.manawork79.workers.dev/api/uuid", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
