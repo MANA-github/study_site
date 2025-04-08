@@ -16,7 +16,7 @@ async function uuidCheck() {
             )
         }); 
 
-        console.log(response);
+        console.log(response.text);
     }
     else {
         console.log(`UUID確認登録済み: ${userId}`);
