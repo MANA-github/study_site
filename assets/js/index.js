@@ -17,6 +17,7 @@ async function uuidCheck() {
         }); 
         const uuid = await response.text();
         console.log(`取得したUUID: ${uuid}`);
+        setCookie("userId", uuid);
     }
     else {
         console.log(`UUID確認登録済み: ${userId}`);
