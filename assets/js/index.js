@@ -41,4 +41,8 @@ function getCookie(name) {
     return match ? decodeURIComponent(match[1]) : null;
 }
 
+function setCookie(name, key) {
+    document.cookie = `uuid=${uuid}; path=/; max-age=126,144,000`;
+}
+
 window.addEventListener("DOMContentLoaded", uuidCheck);
