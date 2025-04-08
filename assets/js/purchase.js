@@ -40,7 +40,7 @@ async function selectMenu() {
             <p>${menuData.MenuName}</p>
             <p>残り${menuData.Remaining}個　${text}</p>
             <input type="checkbox" id="largeFlg">
-            <label for="largeFlg">大盛り</label>
+            <label for="largeFlg">大盛り +100円</label>
         `;
 
         const button = document.createElement("button");
@@ -67,20 +67,12 @@ async function purchase(id) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                userId:"",
                 MenuId: id,
                 flg: largeFlg.checked
             })
         }
     );
-
-    const result = await response.json();
-    console.log("購入結果:", result);
-
-    if (response.ok) {
-        alert("購入が完了しました！");
-    } else {
-        alert("購入に失敗しました。");
-    }
 }
 
 window.addEventListener("DOMContentLoaded", selectMenu);
