@@ -57,7 +57,7 @@ function setCookie(name, value) {
     document.cookie = `${name}=${value}; path=/; max-age=126144000`;
 }
 
-function iDB(property, { dataName = null, keyData = null }) {
+function iDB(property, { dataName = "NaN", keyData = null }) {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open('myDB', 1);
 
