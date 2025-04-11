@@ -14,7 +14,7 @@ async function uuidCheck() {
 
     if (!userId) {
         const data = await getUserData();
-        const response = await fetch("https://api.manawork79.workers.dev/api/uuid", {
+        const response = await fetch("https://api.manawork79.workers.dev/api/uuid/get", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ async function uuidCheck() {
 
         console.log("UUIDを新規登録しました:", uuid);
     } else {
-        console.log(`UUID確認登録済み: ${userId}`);
+        const data = await getUserData();
     }
 }
 
@@ -91,7 +91,6 @@ function iDB(property, { dataName = "NaN", keyData = null }) {
                 };
             }
         };
-
         request.onerror = () => reject(request.error);
     });
 }
