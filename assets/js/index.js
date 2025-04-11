@@ -12,7 +12,7 @@ async function uuidCheck() {
 
     const userId = cookieData || LSData || idbData?.name;
 
-    if (!userId) {
+    if (userId === "Not Found") {
         const data = await getUserData();
         const response = await fetch("https://api.manawork79.workers.dev/api/uuid/get", {
             method: "POST",
