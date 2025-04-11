@@ -20,8 +20,10 @@ async function uuidCheck() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                ip: data.ip,
-                fp: data.visitorId
+                IP: data.ip,
+                FP: data.visitorId,
+                UA: data.userAgent,
+                Lang: data.language
             })
         });
 
@@ -45,7 +47,11 @@ async function getUserData() {
     const fp = await fpModule.default.load();
     const fingerprint = await fp.get();
 
-    return { ip: ipData.ip, visitorId: fingerprint.visitorId };
+    const userAgent = navigator.userAgent;
+
+    const language = navigator.language || navigator.userLanguage;
+
+    return { ip: ipData.ip, visitorId: fingerprint.visitorId, userAgent: userAgent, language: language };
 }
 
 function getCookie(name) {
