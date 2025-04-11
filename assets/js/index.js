@@ -2,18 +2,18 @@ window.addEventListener("DOMContentLoaded", uuidCheck);
 
 async function uuidCheck() {
     const dataName = 'uuid';
+
+    // ローカルからの取得
     const cookieData = getCookie(dataName);
     const LSData = localStorage.getItem(dataName);
     const idbData = await iDB("get", { dataName });
-
-    console.log("Cookie:", cookieData);
-    console.log("LocalStorage:", LSData);
-    console.log("IndexedDB:", idbData);
-
     const userId = cookieData || LSData || idbData?.name;
 
-    if (userId === "Not Found") {
-        const data = await getUserData();
+    // クライアント情報取得（先に取得）
+    const data = await getUserData();
+
+    if (!userId) {
+        // サーバーへ新規リクエスト
         const response = await fetch("https://api.manawork79.workers.dev/api/uuid/get", {
             method: "POST",
             headers: {
@@ -29,13 +29,14 @@ async function uuidCheck() {
 
         const uuid = await response.text();
 
+        // 各所に保存
         setCookie(dataName, uuid);
         localStorage.setItem(dataName, uuid);
         await iDB("put", { dataName, keyData: uuid });
 
         console.log("UUIDを新規登録しました:", uuid);
     } else {
-        const data = await getUserData();
+        console.log("既存UUID:", userId);
     }
 }
 
@@ -47,11 +48,12 @@ async function getUserData() {
     const fp = await fpModule.default.load();
     const fingerprint = await fp.get();
 
-    const userAgent = navigator.userAgent;
-
-    const language = navigator.language || navigator.userLanguage;
-
-    return { ip: ipData.ip, visitorId: fingerprint.visitorId, userAgent: userAgent, language: language };
+    return {
+        ip: ipData.ip,
+        visitorId: fingerprint.visitorId,
+        userAgent: navigator.userAgent,
+        language: navigator.language || navigator.userLanguage
+    };
 }
 
 function getCookie(name) {
@@ -60,10 +62,10 @@ function getCookie(name) {
 }
 
 function setCookie(name, value) {
-    document.cookie = `${name}=${value}; path=/; max-age=126144000`;
+    document.cookie = `${name}=${value}; path=/; max-age=126144000`; // 4年間
 }
 
-function iDB(property, { dataName = "NaN", keyData = null }) {
+function iDB(property, { dataName = null, keyData = null }) {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open('myDB', 1);
 
@@ -97,6 +99,7 @@ function iDB(property, { dataName = "NaN", keyData = null }) {
                 };
             }
         };
+
         request.onerror = () => reject(request.error);
     });
 }
