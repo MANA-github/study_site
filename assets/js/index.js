@@ -3,17 +3,14 @@ window.addEventListener("DOMContentLoaded", uuidCheck);
 async function uuidCheck() {
     const dataName = 'uuid';
 
-    // ローカルからの取得
     const cookieData = getCookie(dataName);
     const LSData = localStorage.getItem(dataName);
     const idbData = await iDB("get", { dataName });
     const userId = cookieData || LSData || idbData?.name;
 
-    // クライアント情報取得（先に取得）
     const data = await getUserData();
 
     if (!userId) {
-        // サーバーへ新規リクエスト
         const response = await fetch("https://api.manawork79.workers.dev/api/uuid/get", {
             method: "POST",
             headers: {
@@ -29,7 +26,6 @@ async function uuidCheck() {
 
         const uuid = await response.text();
 
-        // 各所に保存
         setCookie(dataName, uuid);
         localStorage.setItem(dataName, uuid);
         await iDB("put", { dataName, keyData: uuid });
@@ -62,7 +58,7 @@ function getCookie(name) {
 }
 
 function setCookie(name, value) {
-    document.cookie = `${name}=${value}; path=/; max-age=126144000`; // 4年間
+    document.cookie = `${name}=${value}; path=/; max-age=126144000`;
 }
 
 function iDB(property, { dataName = null, keyData = null }) {
